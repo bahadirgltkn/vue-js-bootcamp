@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <!-- 
+        methods:
+            -- icerisinde metod tanımlanan bir component tetiklendiğinde tüm sayfa yeniden render edilecektir fakat computed iceren alan render edilmeyecektir
+
+            -- kullanırken sayfa yapısını iyi tasarlamak gerekmektedir, servis bağlantısı içeren bir yapı metod içermesi halinde herhangi bir render işleminde tekrar tekrar istek yapulacağının farkında olmak lazım
+            
+        computed:
+            -- fonksiyon gibi tanımlanan değişken gibi kullanılan yapılardır
+
+            -- computed bir alan ancak değişikliğe uğradığında re render edilir
+
+            -- computed alanda bir değişiklik olduğunda ise computed yapılar haricindeki alanlar tetiklenecektir
+     -->
+
+    <div id="app" class="container">
+        <div class="row mt-5">
+            <div class="col-2 card offset-5 p-2">
+                <h6>Metod ile:</h6>
+                <h3 class="text-center">{{ counter1 }}</h3>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button @click="inc" class="btn btn-sm btn-primary mr-2">+</button>
+                    <button @click="dec" class="btn btn-sm btn-danger">-</button>
+                </div>
+                <div class="alert alert-warning mt-2">
+                    <h6 class="text-center">{{ getCounter1Result() }}</h6>
+                </div>
+            </div> 
+            <div class="col-2 card offset-5 p-2 mt-5">
+                <h6>Tek satırlık event:</h6>
+                <h3 class="text-center">{{ counter2 }}</h3>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button @click="counter2++" class="btn btn-sm btn-primary mr-2">+</button>
+                    <button @click="counter2--" class="btn btn-sm btn-danger">-</button>
+                </div>
+                <div class="alert alert-warning mt-2">
+                    <h6 class="text-center">{{ getCounter2Result() }}</h6>
+                </div>
+            </div>
+            <div class="col-2 card offset-5 p-2 mt-5">
+                <h6>Computed ile:</h6>
+                <h3 class="text-center">{{ counter3 }}</h3>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button @click="counter3++" class="btn btn-sm btn-primary mr-2">+</button>
+                    <button @click="counter3--" class="btn btn-sm btn-danger">-</button>
+                </div>
+                <div class="alert alert-warning mt-2">
+                    <h6 class="text-center">{{ getCounter3Result }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

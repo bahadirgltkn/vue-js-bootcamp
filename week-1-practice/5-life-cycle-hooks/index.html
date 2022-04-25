@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Cycle Hooks</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+
+    <!-- 
+        -- bir elemente erişmek istiyorsak bunu mounted'dan sonra yapıyor olmamız gerekmektedir bu aşamaya kadar DOM oluşmamıştır
+     -->
+    <div id="app">
+        <h3> {{ title }} </h3>
+        <pre> {{itemList}} </pre>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

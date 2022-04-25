@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    
+    <!-- 
+        directive:
+            -- v ön ekine sahip özel niteliklerdir ve görevi DOM'a özelleştirilmiş davranışlar uygulamaktır
+            -- v-bind, v-on, v-model, v-show, v-pre, v-text...
+
+
+        two way data binding:
+            -- v-model directive ile birlikte gerçekleşmektedir.
+            -- event ve binding işlemini bizim için otomatik olarak yapan bir yapıdadır
+            -- aşağıdaki 3. örnekte input alanına girilen değerler yalnızca v-model sayesinde textarea içerisine yazdırılmaktadır. v-model bizim için ilgili datanın değişikliğini takip etmektedir
+     -->
+
+    <div id="app">
+        <div class="row mt-5">
+            <div class="col-4 offset-4">
+                <h3 class="text-center">Event</h3>
+                <h6>Metot ile birlikte: </h6>
+                <input @input="updateValue" type="text" class="form-control">
+                <textarea class="form-control mt-2" rows="2"> {{ fullName1 }} </textarea>
+
+                <h6 class="mt-2">Tek satırlık event:</h6>
+                <input @input="fullName2 = $event.target.value" type="text" class="form-control mt-2">
+                <textarea class="form-control mt-2" rows="2"> {{ fullName2 }} </textarea>
+
+                <h6 class="mt-2">V-Model ile birlikte:</h6>
+                <input v-model="fullName3" type="text" class="form-control mt-2">
+                <textarea class="form-control mt-2" rows="2"> {{ fullName3 }} </textarea>
+                <button class="btn btn-sm btn-primary mt-2">Ekle</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

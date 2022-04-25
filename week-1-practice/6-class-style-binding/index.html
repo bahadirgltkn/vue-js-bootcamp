@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Style Binding</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app">
+        <button @click="showBorder1 = !showBorder1">Border Ekle/Çıkar</button>
+        <button @click="redBG = !redBG" style="margin-left: 10px;">Kırmızı BG Ekle/Çıkar</button>
+        <div class="box" :class="{border : showBorder1, red : redBG}" style="margin-top: 10px;"></div>
+        <!-- showBorder ve redBG true ise ilgili değişkenler eklenecektir -->
+        <br>
+        <hr>
+        <h4 style="margin-top: 10px;">Class Style</h4>
+        <button @click="showBorder2 = !showBorder2" style="margin-top: 10px;">Border Ekle/Çıkar</button>
+        <button @click="blueBG = !blueBG" style="margin-left: 10px; margin-top: 10px;">Mavi BG Ekle/Çıkar</button>
+        <div class="box" :class="boxClasses" style="margin-top: 10px;"></div>
+        <br>
+        <hr>
+        <h4 style="margin-top: 10px;">V-model background</h4>
+        <input type="text" v-model="bgColor" style="margin-top: 5px;">
+        <div class="box" :class="['red']" style="margin-top: 10px;" :style="{background : bgColor}"></div>
+        <!-- <div class="box" :class="['red']" style="margin-top: 10px;"></div> -->
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
