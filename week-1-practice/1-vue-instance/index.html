@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Instance</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 
+        string interpolation:
+            -- yalnızca text content icerisinde {{}} seklinde calismaktadir
+            -- eger biz taglarımız içerisinde attribute değerlerini vue tarafından getireceksek burada karşımıza v-bind özelliği gelmektedir.
+        
+        v-bind : 
+            -- v-bind ile birlikte attribute değerlerimizin değerlerinin vue tarafından dinamik olarak gelmesini sağlayabiliriz
+            
+                -- v-bind:target="dataName" ya da
+                -- :target="dataName" seklinde 2 farklı şekilde kullanılabilmektedir
+        
+        v-on: 
+            -- bir event gerçekleşmesini istediğimizde kulanırız
+            -- v-on:click="methodName" sayesinde ilgili elemente tıklama gerceklestiginde gerceklesecek davranışı belirleriz
+            -- @click="methodName" seklinde kısa bir sekilde yazmak da mümkün
+     -->
+    
+    <div id="app" class="container">
+        <h3>Html Title</h3>
+        <!-- string interpolation {{ dataName }} -->
+        <h3>{{ title }}</h3>
+        <p>{{ content }}</p>
+        <a href="https://youtube.com" target="_blank">Html üzerinden - Youtube</a>
+        <br>
+        <a :target="link.target" :href="link.url">Vue üzerinden - {{ link.content }}</a>
+        <br>
+        <button class="mt-2 btn-success" v-on:click="changeTitle1">Change Title 1</button>
+        <button class="ml-2 btn-dark" @click="changeTitle2('Title With Parameter')">Change Title 2</button>
+        <br>
+        <div @mousemove="updateCoords" class="box mt-2"></div>
+        <span> {{ coords.x }} {{ coords.y }}</span>
+    </div>
+    
+
+
+    <script src="app.js"></script>
+</body>
+</html>
