@@ -10,7 +10,36 @@
 </head>
 <body>
     
-    <div id="app">
+    <!-- 
+        -- conditionsların doğru bir şekilde çalışabilmesi için aynı seviyede yazılmış olduklarına dikkat edilmelidir
+
+        -- v-show ile de şarta bağla bir gösterim yapabiliriz fakat bu şekilde yaptığımızda yalnızca style özelliğini none yaparak açıp kapama işlemi gerçekleştirecektir
+
+        -- v-if yapısı elementi tamamen DOM üzerinden kaldırmaktadır ya da eklemektedir
+     -->
+
+    <div id="app" class="container">
+        <button class="btn btn-sm btn-success mt-4" @click="showContainer = !showContainer">Aç / Kapat</button>
+        <h3 v-if="!showContainer" class="tetx-danger">Başlangıçta Gözükecek</h3>
+        <h3 v-else class="text-primary">Sonradan Gözükecek</h3>
+
+        <hr>
+
+        <h4 :class="counterBoxClass">{{ counter }}</h4>
+        <button class="btn btn-sm btn-primary" @click="counter++">Artır</button>
+        <button class="btn btn-sm btn-danger" @click="counter--">Azalt</button>
+        <h5 v-if="counter > 0" class="text-success mt-2">Counter Pozitif</h5>
+        <h5 v-else-if="counter < 0" class="text-danger mt-2">Counter Negatif</h5>
+        <h5 v-else class="mt-2">Counter 0</h5>
+
+        <hr>
+
+        <h4>{{ counter2 }}</h4>
+        <button class="btn btn-sm btn-primary" @click="counter2++">Artır</button>
+        <button class="btn btn-sm btn-danger" @click="counter2--">Azalt</button>
+        <h5 v-show="counter2 > 0" class="text-success mt-2">Counter Pozitif</h5>
+        <h5 v-show="counter2 < 0" class="text-danger mt-2">Counter Negatif</h5>
+        <h5 v-show class="mt-2">Counter 0</h5>
 
     </div>
     
