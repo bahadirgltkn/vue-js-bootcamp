@@ -1,0 +1,54 @@
+                                *******************  PROPS *******************
+    Parent to Child:
+    -- Parent componentten child componente aktarılan verileri alabilmek için kullanmış olduğumuz yöntemdir.
+
+    <user-section :items="userList"></user-section>
+        -- userList datası user-section componentine items adındaki bir props ile gönderilmiştir
+        -- user-section componentinde propslar içerisinde items tanımlanarak component içerisinde   istenilen yerde userList verisi kullanılabilmektedir
+
+        -- props: ["items", "userList"] seklinde bir karşılama ile birlikte ilgili component içerisinde parenttan gelen data kullanılabilmektedir
+    
+                            *******************  Custom Event *******************
+
+    Child to Parent:
+        -- Child component içerisinde parenta bir veri göndermek istediğimizde bunu custom eventler yardımı ile yapabilmekteyiz.
+        -- Custom eventler $emit() içerisinde tanımlanmalıdırlar, örneğin;
+
+        <button @click="$emit('new-item', newData)">Set Data</button>
+
+            -- yukarıdaki butona tıklandığında üst parenta new-item adındaki bir custom event ile birlikte newData verisi gönderilmektedir
+            -- Parent bu veriye erişebilmek için event kullanmak durumundadır çünkü veri event içerisinde üste taşınmaktadır;
+
+                <UserSection @new-item="userList.push($event)"/> 
+                    -- gelen newData verisi $event içerisinde userList'e eklenmektedir
+            
+            -- dokümantasyon açısından hangi emitlerin dışarıya açıldığının belli olması için script içerisinde;
+                -- emit : ['delete-item', 'new-item'] seklinde bir yapı ile bunları ifade edebiliriz
+                -- bu kullanım zorunlu değildir, proje içerisinde olmasa da çalışacaktır.
+
+
+                            *******************  PROVIDE / INJECT *******************
+
+        -- Bazen componentlerimiz arasında data transferini sağlamak zor olabilmektedir. Çok fazla child derinliğinin olduğu projelerde özellikle zorluklar yaşanmaktadır. Bu gibi durumlarda taşımak istediğimiz dataları provide ve inject yapıları ile gönderip alabilmekteyiz.
+
+        -- Bu yapı bizim için kolaylık sağlıyor olsa da parent-child seviyesinin az olduğu durumlarda props ve custom event gibi yapılar ile data alış-verişini sağlamak daha doğru olacaktır.
+
+        PROVIDE:
+            -- parent içerisinde alt componentlere gonderilecek olan datalar;
+
+                provide(){
+                    return{
+                        data1: this.data1,
+                        function1: this.function1
+                    }
+                }
+
+                seklinde gönderilebilmektedir.
+
+        INJECT:  
+            -- alt componentlerden bu datalara ihtiyaç duyanlar ise yalnızca kendisi için lazım olanı;
+                
+                inject : ["data1"] ---> seklinde component içerisinde kullanılabilmektedir
+
+                
+            

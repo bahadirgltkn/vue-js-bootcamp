@@ -1,0 +1,7 @@
+                            ************************* AXIOS *************************
+
+    -- kullanılacak olan servise istek atmamıza olanak sağlayan kütüphanedir
+    
+    -- istek yapılacak olan endpointin girilmesiyle birlikte get post put delete gibi http metotları gerçekleştirilebilmektedir.
+
+    -- axios promise yöntemi ile çalışmaktadır. yani istekler gerçekleştikten sonra then ile birlikte response üzerinde islemler gercekleştirebiliriz

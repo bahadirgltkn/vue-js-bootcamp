@@ -1,0 +1,18 @@
+                            ******************** DYNAMIC COMPONENTS ********************
+    
+    -- Routing islemi yapmadan componentler arasında gezinmemizi saglayan bir yapı olarak tanımlayabiliriz.
+
+    -- <component> elementi içerisinde :is="" keywordu ile birlikte hangi componentin aktif olacağı takip edilmektedir. 
+
+    -- aktif hale gelecek olan componentimizin içerisinde bir props, provide, inject, emit gibi yapıları kullanabilmekteyiz. componente ozel olarak ilgili yapılar kullanılacaktır
+
+    -- componentler arasında dolaşırken bir önceki component içerisinde yapılan işlemler kaybolacaktır. önrğin bir input alanı olsun ve ilgili form bilgilerini girdikten sonra anlık olarak diğer componente geçtiğimizde form bilgileri silinmiş olacaktır. 
+
+    -- şayet component içerisindeki bilgilerin kaybolmasını istemiyorsak <keep-alive></keep-alive> tagları arasında componentimizi tanımlamalıyız. fakat bu seferde hook cycle'ımızı kaybetmiş olacağız. yani componentlerimiz yalnızca bir kez mount edilecek sonrasında hep aynı kalacaktır.
+
+    -- bu noktada vue.js bize yeni bir hook cycle vermektedir;
+    
+            1- activeted() 
+            2- deactiveted() 
+
+        bu iki cycle sayesinde component içerisinde mounted kullanmamız gerektirecek bir durum olursa bu metotları kullanabiliriz. Bu metotlar sayesinde ilgili component içerisinde olduğumuzu ya da componentten çıkıldığını anlayabilmekteyiz.
