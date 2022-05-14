@@ -1,0 +1,73 @@
+                            ********************** VUEX **********************
+
+    -- Verilerimizin nereden değiştiğini, nereden isteklerin oluştuğunu takip etmemize olanak sağlayacak olan state management paradigması ve kütüphanesidir.
+
+    -- vuex içerisinde state, getters, mutations, actions, modules gibi yapılar bulunmaktadır
+
+
+    ******************************************** State ***************************************************
+    
+        -- değişkenlerimizin, datalarımızın bulunmuş olduğu kısımdır
+
+        -- buradaki verilere erişmek için $store.state seklinde bir kullanım yapılabilir
+    
+    
+    *******************************************  Getters ***************************************************
+     
+        -- state içerisindeki verilerimize direkt olarak erişilmesini istemeyebiliriz
+
+        -- yahut state içerisindeki verilerimizin filtrelenmiş halinin gönderilmesini istemeyebiliriz
+
+        -- bu gibi durumlarda getters yapısı oldukça işimize yarayacaktır
+
+        -- ayrıca bir standart oturtmak adına da oldukça önemlidir
+
+        -- getterslar reactive olarak çalışmaktadırlar bu nedenle ilgili component içerisinde computed ile karşılanarak isimlendirme noktasında daha rahat hareket edilebilir. fakat böyle bir durumda da aynı işi yapan iki yapı oluşmuş olacak.
+
+        -- bu nedenle getterslara erişmek için daha kolay bir yöntem bulunamkdardır. İlgili component içerisinde mapGetters import edilerek computed içerisinde istenilen getterslar çağıralbilmektedir.
+
+        -- bu sayede uzun uzun $store.getters.... yazmak yerine direkt olarak getters'ın ismiyle çağırım yapılabilmektedir.
+
+                    import {mapGetters} from 'vuex'
+
+                    computed : {
+                        // spread operator
+                        ...mapGetters({
+                            userList : "_getters_name",
+                            itemList: "_getters_name"
+                        }),
+
+                        component_computed(),
+                    }
+
+                    seklinde bir kullanım ile istersek componentimize ait olacak computedlar da tanımlama şansına sahip olmaktayız
+        
+        -- getters fonksiyonlarının belli olması açısından isimlendirirken başlarına _ koyulması güzel olacaktır.
+
+    ******************************************* Mutations ***************************************************
+     
+        -- state'in anlık olarak set edilmesini sağlamaktır
+
+        -- componentlerin içerisinde commit() fonksiyonu ile birlikte çağırılmaktadırlar
+
+            -- this.$store.commit('mmutation_name', item) ---> ilk parametre mutationslar içerisindeki hangi mutations functionu çağırılacağını bildirmektir
+        
+        -- senkron olarak çalışmaktadırlar, asenkron çalışmazlar
+
+        -- servis ile bir baglantı kurulacak olan yapılarda kullanılması pek tavsiye edilmez çünkü servisten sonucun gelmesini beklemeden kendisi state'i set edecektir
+
+    
+    *******************************************  Actions ***************************************************
+
+        -- state'in asenkron bir sekilde set edilmesini sağlamaktadır.
+
+        -- actionslar parametre olarak context almaktadırlar.
+
+        -- context, bir vuex instance olarak düşünülebilir, actions ile birlikte vuex içerisinde istenilen herhangi bir yapı ile iletişimin kurulması sağlanmaktadır
+
+        -- actionsları çağırabilmek adına dispatch() fonksiyonu çağırılmalıdır.
+
+        -- destructive bir yapı kullanarak context objesini parametre olarak göndermek yerine context içerisindeki bir alanın ismini yazıp gönderebiliriz
+        
+            -- newItem({commit}, item) ---> ile birlikte context içerisindeki commit'in kullanılacağı söylenmiş olmaktadır
+        

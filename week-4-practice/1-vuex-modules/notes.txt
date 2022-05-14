@@ -1,0 +1,13 @@
+                        ************************ MODULES ************************
+    
+    -- projenin büyümesi halinde tüm state yönetimi tek bir sayfa üzerinden yapılamaz hale gelecektir.
+
+    -- modules yapısı sayesinde yapıları birbirinden ayırarak daha kolay bir yönetim sağlamış oluruz.
+
+    -- ayrılan stateleri tek bir store içerisinde tutmak için store'a import edilmesi ve modules içerisinde belirtilmesi gerekmektedir.
+
+    -- modules yapısı bize aynı zamanda generic bir yapı da katacaktır, örneğin aynı işlemlerin farklı entityler için ypaıldığını düşünelim bu ürün eklemek ya da kişi eklemek olsun temelde mantık aynıdır.
+    liste içerisine push edilerek datanın eklenmesi sağlanır. biz modules yapısında generic isimler kullanarak yazmış olduğumuz bir kodun başka bir yerde kullanılmasını da sağlayabiliriz.
+
+    -- bu noktada ise karşımıza fonksiyonların isim benzerlikleri gibi bir sorun çıkıyor fakat bu sorunun önüne geçebilmek için ilgili modulün içerisine namaspaced: true eklenerek ilgili modulün altındaki bir fonksiyona yalnızca modulün adı ile erişim sağlamış oluruz.
+    

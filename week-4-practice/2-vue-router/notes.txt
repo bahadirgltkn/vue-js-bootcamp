@@ -1,0 +1,47 @@
+                        ************************ ROUTER ************************
+
+    -- Backend'e ihtiyaç duymadan sayfalarımızın url yapılarını yönetebileceğimiz bir eklentidir.
+
+    -- yüklenmesi için npm install vue-router@4 komutunun çalıştırılması gerekmektedir
+
+    -- sonrasında projemizin içerisinde router.js adında (anlaşılması adına bu şekilde isimlendiriyoruz) bir dosya açarak içerisinde gerekli importları yapıyoruz
+
+    -- bir router objesini createRouter metodu ile üreterek içerisinde sayfalarımıza ait route tanımlamalarını yapıyoruz
+
+    -- name propertysini sayfalar arasında kolay bir şekilde route gerçekleştirmek için kullanıyoruz
+
+    -- path view edilecek olan sayfanın urlini gösteririz
+
+    -- component içerisinde ise view edilecek olan sayfanın proje içerisindeki dosya konumunu bildiririz.
+
+    -- bir sayfa üzerinde başka bir sayfaya geçiş yapılacaksa; 
+        
+        -- this.$router.push(`/details/${e.target.value}`)  ya da 
+
+        -- this.$router.push({
+                name: 'DetailsPage',
+                params: {
+                    userId: e.target.value  
+                }
+            });
+
+            seklinde bir obje gönderimi ile yapılabilmektedir. 
+    
+    -- istersek route içerisinde gelen queryleri de okuyabilmekteyiz
+    
+    -- route ile query bilgisini de göndermek istersek obje yöntemi ile göndermemiz gerekmektedir.
+
+       -- this.$router.push({
+            name: 'DetailsPage',
+            params: {
+                userId: e.target.value
+            }
+            query:{
+                type: 'DetailAuth',
+                user: 'bahadir'
+            }
+          })
+
+          seklinde açık bir sekilde belirtilmelidir
+    
+    -- router objesi oluşturulurken history fieldı için createwebhashhistory() kullanmak uygulama sunucuya aktarıldığında single page application olduğunu algılaması açısından yararlı olacaktır. Kullanılmazsa sunucu bunu algılayamıyor ve 404 hatası ile karşılaşılmasına neden oluyor.

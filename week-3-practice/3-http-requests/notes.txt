@@ -5,3 +5,32 @@
     -- istek yapılacak olan endpointin girilmesiyle birlikte get post put delete gibi http metotları gerçekleştirilebilmektedir.
 
     -- axios promise yöntemi ile çalışmaktadır. yani istekler gerçekleştikten sonra then ile birlikte response üzerinde islemler gercekleştirebiliriz
+
+    -- öncelikle axios kullabilmek için paketin yüklenmesi gerekmektedir
+    
+    -- bunun için yapılması gereken komut satırında;
+       (npm install --save axios) komutunu çalıştırmaktır.
+    
+    -- ardından projemiz içerisinde ister global olarak istersek de local olarak tanımlayarak kullanım sağlayabiliriz
+
+        (import axios from 'axios')
+
+                            ************************* JSON-SERVER *************************
+    
+    -- fake bir api kurarak hızlı bir şekilde kendi datalarımız ile çalışmamıza olanak sağlayan bir yapıdır.
+
+    -- kullanabilmek için öncelikli olarak projeye dahil edilmesi gerekmektedir.
+
+        1- npm install -g json-server ile projeye dahil edilir
+
+        2- proje içerisinde db.json||data.json isimlendirmesiyle datalarımızı saklamak adına bir dosya oluşturuyoruz.
+
+        3- Başlangıç aşamasında dataları ve yapıyı elimizle yapabileceğimiz gibi kendi verilerimizi göndererek set edilmesini de sağlayabiliriz
+
+        4- Http isteklerinde bulunabilmek adına apimizi ayağa kaldırıyoruz.
+           json-server --watch db.json diyerek. Bu arada db.json kısmında datalarımızı sakladığımız dosyanın adı ne ise o yazılacaktır.
+        
+
+
+
+
